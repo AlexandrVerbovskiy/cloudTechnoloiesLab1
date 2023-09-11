@@ -2,10 +2,8 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 3000;
-const favicon = require('serve-favicon')
 
 app.use(express.json());
-app.use(favicon());
 
 const sendMovies = (res, movies) => {
   res.json(movies);
