@@ -1,8 +1,6 @@
 const http = require("http");
+const fs = require("fs");
 const port = process.env.PORT || 3000;
-
-var http = require("http"),
-  fs = require("fs");
 
 fs.readFile("./index.html", function (err, html) {
   if (err) {
