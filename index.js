@@ -1,11 +1,18 @@
 const http = require("http");
 const port = process.env.PORT || 3000;
 
-http
-  .createServer(function (request, response) {
-    response.writeHead(200, { "Content-Type": "text/plain" });
-    response.end("Hello World!");
-  })
-  .listen(port);
+var http = require("http"),
+  fs = require("fs");
 
-console.log(`Server running at http://localhost:${port}`);
+fs.readFile("./index.html", function (err, html) {
+  if (err) {
+    throw err;
+  }
+  http
+    .createServer(function (request, response) {
+      response.writeHeader(200, { "Content-Type": "text/html" });
+      response.write(html);
+      response.end();
+    })
+    .listen(port);
+});
